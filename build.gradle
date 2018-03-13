@@ -11,7 +11,7 @@ ext {
     jsr_version = '1.0'
     javax_inject_version = '1'
     okhttp_version = '3.8.0'
-    dagger_version = '2.10'
+    dagger_version = '2.14.1'
     moxy_version = '1.5.3'
     rxandroid_version = '2.0.1'
     rxbindings_version = '2.0.0'
@@ -28,7 +28,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.10"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.51"
+        classpath 'com.apollographql.apollo:apollo-gradle-plugin:0.4.4'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
