@@ -40,6 +40,9 @@ dependencies {
     api "com.squareup.moshi:moshi-kotlin:$moshi_version"
     api "javax.annotation:jsr250-api:$jsr_version"
 
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+
     api 'com.apollographql.apollo:apollo-runtime:0.4.4'
     api 'com.apollographql.apollo:apollo-rx2-support:0.4.4'
 }

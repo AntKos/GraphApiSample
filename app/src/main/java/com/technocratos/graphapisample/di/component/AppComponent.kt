@@ -1,6 +1,7 @@
 package com.technocratos.graphapisample.di.component
 
 import com.technocratos.graphapisample.app.App
+import com.technocratos.graphapisample.auth.presenter.LoginPresenter
 import com.technocratos.graphapisample.di.module.AppAndroidModule
 import com.technocratos.graphapisample.di.module.AppModule
 import com.technocratos.graphapisample.di.scope.Singleton

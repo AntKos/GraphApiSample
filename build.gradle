@@ -6,7 +6,7 @@ ext {
     compile_sdk_version = 27
     min_sdk_version = 21
     target_sdk_version = 27
-    support_version = '27.0.2'
+    support_version = '27.1.0'
     retrofit_version = '2.3.0'
     jsr_version = '1.0'
     javax_inject_version = '1'
