@@ -31,6 +31,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
     implementation "com.android.support:appcompat-v7:$support_version"
     compile project(':domain')
 
@@ -46,7 +50,4 @@ dependencies {
     implementation "com.arello-mobile:moxy-app-compat:$moxy_version"
 
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
-
-    implementation 'com.apollographql.apollo:apollo-runtime:0.4.4'
-    implementation 'com.apollographql.apollo:apollo-rx2-support:0.4.4'
 }
