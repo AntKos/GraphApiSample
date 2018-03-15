@@ -1,9 +1,6 @@
 package com.technocratos.graphapisample.base
 
-import com.arellomobile.mvp.MvpView
-
-
-interface BaseMvpView : MvpView {
+interface BaseView {
     fun showError(error : String)
     fun showProgress()
     fun hideProgress()

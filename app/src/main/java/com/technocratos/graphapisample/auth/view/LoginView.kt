@@ -1,5 +1,5 @@
 package com.technocratos.graphapisample.auth.view
 
-import com.technocratos.graphapisample.base.BaseMvpView
+import com.technocratos.graphapisample.base.BaseView
 
-interface LoginView : BaseMvpView
+interface LoginView : BaseView

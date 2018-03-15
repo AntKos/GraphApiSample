@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.technocratos.graphapisample.extensions.showToast
 import dagger.android.support.DaggerAppCompatActivity
 
-open class BaseActivity : DaggerAppCompatActivity(), BaseMvpView {
+open class BaseActivity : DaggerAppCompatActivity(), BaseView {
 
     lateinit var progress : ProgressDialog
 

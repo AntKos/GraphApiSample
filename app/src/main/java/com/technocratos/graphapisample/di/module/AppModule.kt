@@ -2,10 +2,8 @@ package com.technocratos.graphapisample.di.module
 
 import android.content.Context
 import com.apollographql.apollo.ApolloClient
-import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.technocratos.graphapisample.base.AppPreferences
 import com.technocratos.graphapisample.app.App
-import com.technocratos.graphapisample.auth.presenter.LoginPresenter
+import com.technocratos.graphapisample.base.AppPreferences
 import com.technocratos.graphapisample.di.scope.Singleton
 import dagger.Module
 import dagger.Provides
@@ -56,9 +54,4 @@ class AppModule {
     fun provideAppPreferences(context: Context): AppPreferences {
         return AppPreferences(context)
     }
-
-    /*@ProvidePresenter
-    fun provideLoginPresenter(apolloClient: ApolloClient, preferences: AppPreferences) : LoginPresenter {
-        return LoginPresenter(apolloClient, preferences)
-    }*/
 }
