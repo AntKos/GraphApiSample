@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_padding"
+    tools:context="com.technocratos.graphapisample.auth.activities.StartActivity"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/startActivityButtonSignUp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:layout_above="@+id/startActivityButtonLogin"/>
+
+    <Button
+        android:id="@+id/startActivityButtonLogin"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
