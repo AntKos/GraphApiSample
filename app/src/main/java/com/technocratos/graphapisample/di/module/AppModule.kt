@@ -1,6 +1,7 @@
 package com.technocratos.graphapisample.di.module
 
 import android.content.Context
+import android.util.Log
 import com.apollographql.apollo.ApolloClient
 import com.technocratos.graphapisample.app.App
 import com.technocratos.graphapisample.base.AppPreferences
@@ -23,8 +24,12 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp(@Named("LOGGER") interceptor: Interceptor): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(interceptor).build()
+    fun provideOkHttp(@Named("LOGGER") loggingInterceptor: Interceptor,
+                      @Named("AUTHORIZATOR") authInterceptor: Interceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)
+                .build()
     }
 
     @Provides
@@ -40,6 +45,28 @@ class AppModule {
     fun provideLoggingInterceptor(): Interceptor {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
+        return interceptor
+    }
+
+    @Provides
+    @Singleton
+    @Named("AUTHORIZATOR")
+    fun provideAuthorizationInterceptor(preferences: AppPreferences): Interceptor {
+
+
+        val interceptor = Interceptor { chain: Interceptor.Chain? ->
+            val token = preferences.token
+            Log.d("AppModule", "token = " + token)
+            if (token.isNullOrEmpty()) {
+                Log.d("AppModule", "handle empty")
+                return@Interceptor chain!!.proceed(chain.request())
+            } else {
+                Log.d("AppModule", "handle nonempty")
+                return@Interceptor chain!!.proceed(chain.request()
+                        .newBuilder().header("Authorization", "JWT $token").build())
+            }
+
+        }
         return interceptor
     }
 

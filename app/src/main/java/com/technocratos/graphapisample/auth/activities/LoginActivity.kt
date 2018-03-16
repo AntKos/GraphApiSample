@@ -5,17 +5,15 @@ import com.technocratos.graphapisample.R
 import com.technocratos.graphapisample.auth.presenter.LoginPresenter
 import com.technocratos.graphapisample.auth.view.LoginView
 import com.technocratos.graphapisample.base.BaseActivity
+import com.technocratos.graphapisample.extensions.moveNext
+import com.technocratos.graphapisample.main.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import javax.inject.Inject
 
-class LoginActivity : BaseActivity(), LoginView {
+class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
 
     companion object {
         var TAG = LoginActivity::class.java.simpleName
     }
-
-    @Inject
-    lateinit var presenter : LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,4 +28,7 @@ class LoginActivity : BaseActivity(), LoginView {
         presenter.handleLoginClick(username, password)
     }
 
+    override fun handleSuccess() {
+        moveNext(MainActivity::class.java)
+    }
 }

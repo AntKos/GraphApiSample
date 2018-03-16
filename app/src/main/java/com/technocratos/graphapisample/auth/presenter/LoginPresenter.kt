@@ -6,11 +6,14 @@ import com.apollographql.apollo.rx2.Rx2Apollo
 import com.technocratos.data.LoginUserQuery
 import com.technocratos.graphapisample.auth.view.LoginView
 import com.technocratos.graphapisample.base.AppPreferences
+import com.technocratos.graphapisample.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class LoginPresenter @Inject constructor(val view: LoginView, val apolloClient: ApolloClient, val preferences: AppPreferences) {
+class LoginPresenter @Inject constructor(view: LoginView,
+                                         val apolloClient: ApolloClient,
+                                         val preferences: AppPreferences) : BasePresenter<LoginView>(view) {
     companion object {
         val TAG: String = LoginPresenter::class.java.simpleName
     }
@@ -21,21 +24,22 @@ class LoginPresenter @Inject constructor(val view: LoginView, val apolloClient: 
 
     fun handleLoginClick(login: String, password: String) {
         val query = LoginUserQuery(login, password)
-        Rx2Apollo.from(apolloClient.query(query))
+        execute(Rx2Apollo.from(apolloClient.query(query))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe({ view.showProgress() })
                 .doOnTerminate({ view.hideProgress() })
                 .doOnError({ t -> t.printStackTrace() })
-                .subscribe({ response ->
-                    Log.d(TAG, "response = " + response)
-                    if (response.hasErrors()) {
-                        view.showError(response.errors()[0].message()!!)
+                .subscribe({
+                    Log.d(TAG, "response = " + it)
+                    if (it.hasErrors()) {
+                        view.showError(it.errors()[0].message()!!)
                     } else {
-                        preferences.token = response.data()?.loginUser()?.token() ?: ""
-                        preferences.userId = response.data()?.loginUser()?.user()?.id() ?: ""
+                        preferences.token = it.data()?.loginUser()?.token() ?: ""
+                        preferences.userId = it.data()?.loginUser()?.user()?.id() ?: ""
+                        view.handleSuccess()
                     }
-                })
+                }))
     }
 
 }
