@@ -26,7 +26,7 @@ class MainPresenter @Inject constructor(view: MainView, val apolloClient: Apollo
                     if (it.hasErrors()) {
                         view.showError(it.errors()[0].message()!!)
                     } else {
-                        view.setUserList(it.data()?.listUsers())
+                        view.setUserList(it.data()?.listUsers() ?: ArrayList())
                     } }
         )
     }

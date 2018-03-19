@@ -2,6 +2,7 @@ package com.technocratos.graphapisample.main.activities
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.technocratos.data.ListUsersQuery
 import com.technocratos.graphapisample.R
 import com.technocratos.graphapisample.base.BaseActivity
@@ -20,12 +21,13 @@ class MainActivity : BaseActivity<MainPresenter>() , MainView {
         presenter.fetch()
     }
 
-    override fun setUserList(list: List<ListUsersQuery.ListUser>?) {
+    override fun setUserList(list: List<ListUsersQuery.ListUser>) {
+        Log.d("MainActivity", "setUserList $list, size = ${list.size} ")
         adapter.data = list
     }
 
     fun initList() {
-        adapter = UserListAdapter()
+        adapter = UserListAdapter(this)
         mainActivityRecycler.layoutManager = LinearLayoutManager(this)
         mainActivityRecycler.adapter = adapter
     }

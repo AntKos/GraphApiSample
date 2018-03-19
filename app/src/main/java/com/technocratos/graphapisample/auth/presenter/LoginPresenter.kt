@@ -37,6 +37,8 @@ class LoginPresenter @Inject constructor(view: LoginView,
                     } else {
                         preferences.token = it.data()?.loginUser()?.token() ?: ""
                         preferences.userId = it.data()?.loginUser()?.user()?.id() ?: ""
+                        Log.d(TAG, "setToken, check: = " + preferences.token)
+
                         view.handleSuccess()
                     }
                 }))
