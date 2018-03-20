@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".auth.MainActivity"></activity>
         <activity android:name=".auth.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".main.activities.MainActivity"/>
         <activity android:name=".auth.activities.LoginActivity" />
         <activity android:name=".auth.activities.SignUpActivity" />
-        <activity android:name=".base.MvpDaggerActivity"></activity>
     </application>
 
 </manifest>

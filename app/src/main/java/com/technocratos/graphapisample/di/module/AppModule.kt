@@ -1,7 +1,9 @@
 package com.technocratos.graphapisample.di.module
 
 import android.content.Context
+import android.util.Log
 import com.apollographql.apollo.ApolloClient
+import com.technocratos.graphapisample.api.TokenInterceptor
 import com.technocratos.graphapisample.app.App
 import com.technocratos.graphapisample.base.AppPreferences
 import com.technocratos.graphapisample.di.scope.Singleton
@@ -23,8 +25,12 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp(@Named("LOGGER") interceptor: Interceptor): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(interceptor).build()
+    fun provideOkHttp(@Named("LOGGER") loggingInterceptor: Interceptor,
+                      @Named("AUTHORIZATOR") authInterceptor: Interceptor): OkHttpClient {
+        return OkHttpClient().newBuilder()
+                .addInterceptor(authInterceptor)
+                .addInterceptor(loggingInterceptor)
+                .build()
     }
 
     @Provides
@@ -45,8 +51,19 @@ class AppModule {
 
     @Provides
     @Singleton
+    @Named("AUTHORIZATOR")
+    fun provideAuthorizationInterceptor(preferences: AppPreferences): Interceptor {
+        return TokenInterceptor(preferences)
+    }
+
+    @Provides
+    @Singleton
     fun provideApollo(@Named("BASE_URL") url: String, okHttpClient: OkHttpClient): ApolloClient {
-        return ApolloClient.builder().okHttpClient(okHttpClient).serverUrl(url).build()
+        return ApolloClient
+                .builder()
+                .okHttpClient(okHttpClient)
+                .serverUrl(url)
+                .build()
     }
 
     @Provides
