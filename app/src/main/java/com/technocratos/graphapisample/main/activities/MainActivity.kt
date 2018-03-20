@@ -29,7 +29,7 @@ class MainActivity : BaseActivity<MainPresenter>() , MainView {
 
     fun initList() {
         adapter = UserListAdapter(this)
-        mainActivityRecycler.addItemDecoration(SpacingItemDecorator(resources.getDimension(R.dimen.spacing_4).toInt()))
+        mainActivityRecycler.addItemDecoration(SpacingItemDecorator(resources.getDimension(R.dimen.spacing_1).toInt()))
         mainActivityRecycler.layoutManager = LinearLayoutManager(this)
         mainActivityRecycler.adapter = adapter
     }

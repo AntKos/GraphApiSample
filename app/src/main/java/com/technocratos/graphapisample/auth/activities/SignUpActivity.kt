@@ -3,11 +3,16 @@ package com.technocratos.graphapisample.auth.activities
 import android.os.Bundle
 import com.technocratos.graphapisample.R
 import com.technocratos.graphapisample.auth.presenter.SignUpPresenter
+import com.technocratos.graphapisample.auth.view.SignUpView
 import com.technocratos.graphapisample.base.BaseActivity
 import com.technocratos.graphapisample.extensions.getValue
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
-class SignUpActivity : BaseActivity<SignUpPresenter>() {
+class SignUpActivity : BaseActivity<SignUpPresenter>(), SignUpView {
+
+    override fun handleSuccess() {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

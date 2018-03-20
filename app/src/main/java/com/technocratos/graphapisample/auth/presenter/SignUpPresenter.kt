@@ -24,7 +24,8 @@ class SignUpPresenter @javax.inject.Inject constructor(view: SignUpView,
         execute(Rx2Apollo.from(apolloClient.mutate(mutation))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .doOnSubscribe({ view.showProgress() })
+                .doOnSubscribe { view.showProgress() }
+                .doOnSubscribe { view.showProgress() }
                 .doOnTerminate({ view.hideProgress() })
                 .doOnError({ t -> t.printStackTrace() })
                 .subscribe({

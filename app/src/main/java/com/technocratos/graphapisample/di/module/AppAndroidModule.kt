@@ -24,7 +24,7 @@ interface AppAndroidModule {
     fun loginActivityInjector() : LoginActivity
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [LoginModule::class])
-    fun signUpActivity() : SignUpActivity
+    @ContributesAndroidInjector(modules = [SignUpModule::class])
+    fun signUpActivityInjector() : SignUpActivity
 
 }
