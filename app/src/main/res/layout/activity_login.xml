@@ -45,5 +45,6 @@
         android:id="@+id/loginActivityButtonGo"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_padding"
         android:text="@string/login"/>
 </LinearLayout>

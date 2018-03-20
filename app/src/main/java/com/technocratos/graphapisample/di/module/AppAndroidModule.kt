@@ -2,6 +2,7 @@ package com.technocratos.graphapisample.di.module
 
 import com.technocratos.graphapisample.main.activities.MainActivity
 import com.technocratos.graphapisample.auth.activities.LoginActivity
+import com.technocratos.graphapisample.auth.activities.SignUpActivity
 import com.technocratos.graphapisample.auth.activities.StartActivity
 import com.technocratos.graphapisample.di.scope.ActivityScope
 import dagger.Module
@@ -22,5 +23,8 @@ interface AppAndroidModule {
     @ContributesAndroidInjector(modules = [LoginModule::class])
     fun loginActivityInjector() : LoginActivity
 
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [LoginModule::class])
+    fun signUpActivity() : SignUpActivity
 
 }

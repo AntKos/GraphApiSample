@@ -9,6 +9,7 @@ import com.technocratos.graphapisample.base.BaseActivity
 import com.technocratos.graphapisample.main.adapter.UserListAdapter
 import com.technocratos.graphapisample.main.presenter.MainPresenter
 import com.technocratos.graphapisample.main.view.MainView
+import com.technocratos.graphapisample.view.SpacingItemDecorator
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainPresenter>() , MainView {
@@ -28,6 +29,7 @@ class MainActivity : BaseActivity<MainPresenter>() , MainView {
 
     fun initList() {
         adapter = UserListAdapter(this)
+        mainActivityRecycler.addItemDecoration(SpacingItemDecorator(resources.getDimension(R.dimen.spacing_4).toInt()))
         mainActivityRecycler.layoutManager = LinearLayoutManager(this)
         mainActivityRecycler.adapter = adapter
     }
