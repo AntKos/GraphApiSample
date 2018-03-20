@@ -1,0 +1,7 @@
+mutation DeleteUser($username: String!) {
+  deleteUser(username: $username) {
+    user {
+      id
+    }
+  }
+}
