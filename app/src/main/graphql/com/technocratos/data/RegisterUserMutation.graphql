@@ -1,0 +1,16 @@
+mutation RegisterUser($username: String!, $password: String!, $email: String!, $firstName: String, $lastName: String, $phones: [String]) {
+  registerUserWithToken(username: $username, password: $password, email: $email, firstName: $firstName, lastName: $lastName, phones: $phones) {
+    registerResponse {
+      token
+      user {
+        id
+        email
+        firstName
+        lastName
+        phones {
+          id
+        }
+      }
+    }
+  }
+}
