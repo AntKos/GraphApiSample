@@ -33,11 +33,9 @@ class SignUpPresenter @javax.inject.Inject constructor(view: SignUpView,
                     if (it.hasErrors()) {
                         view.showError(it.errors()[0].message()!!)
                     } else {
-                        //TODO:find token
-                        //   preferences.token = it.data()?.registerUser()?.user()?.t ?: ""
-                        preferences.userId = it.data()?.registerUser()?.user()?.id() ?: ""
+                        preferences.token = it.data()?.registerUserWithToken()?.registerResponse()?.token()?: ""
+                        preferences.userId = it.data()?.registerUserWithToken()?.registerResponse()?.user()?.id() ?: ""
                         Log.d(LoginPresenter.TAG, "setToken, check: = " + preferences.token)
-
                         view.handleSuccess()
                     }
                 }))

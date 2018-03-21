@@ -6,12 +6,14 @@ import com.technocratos.graphapisample.auth.presenter.SignUpPresenter
 import com.technocratos.graphapisample.auth.view.SignUpView
 import com.technocratos.graphapisample.base.BaseActivity
 import com.technocratos.graphapisample.extensions.getValue
+import com.technocratos.graphapisample.extensions.moveNext
+import com.technocratos.graphapisample.main.activities.MainActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : BaseActivity<SignUpPresenter>(), SignUpView {
 
     override fun handleSuccess() {
-
+        moveNext(MainActivity::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
