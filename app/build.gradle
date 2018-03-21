@@ -35,6 +35,10 @@ task introspectSchema(type: ApolloSchemaIntrospectionTask)  {
     output = project.projectDir.absolutePath + '/src/main/graphql/com/technocratos/data/schema.json'
 }
 
+project.afterEvaluate {
+    preBuild.dependsOn introspectSchema
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

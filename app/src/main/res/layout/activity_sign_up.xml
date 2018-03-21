@@ -1,9 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.technocratos.graphapisample.auth.activities.SignUpActivity">
+    tools:context="com.technocratos.graphapisample.auth.activities.LoginActivity"
+    android:padding="@dimen/default_padding"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/signUpActivityTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_16"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@id/loginActivityTextPassword"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/signUpActivityTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_16"
+            android:hint="@string/password"
+            android:inputType="textVisiblePassword"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/signUpActivityEmail"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/signUpActivityEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_16"
+            android:hint="@string/email"
+            android:inputType="textVisiblePassword"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/signUpActivityTextFirstName"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/signUpActivityTextFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_16"
+            android:hint="@string/firstname"
+            android:inputType="textCapWords"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/signUpActivityTextLastName"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/signUpActivityTextLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_16"
+            android:hint="@string/lastname"
+            android:inputType="textCapWords"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/signUpActivityPhones"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/signUpActivityPhones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_16"
+            android:hint="@string/phones"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:nextFocusDown="@+id/loginActivityButtonGo"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/signUpActivityButtonGo"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_padding"
+        android:text="@string/sign_up"/>
+</LinearLayout>

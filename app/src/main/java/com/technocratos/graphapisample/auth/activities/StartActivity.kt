@@ -36,5 +36,6 @@ class StartActivity : BaseActivity<StartPresenter>(), StartView {
     fun setupActivity() {
         setContentView(R.layout.activity_start)
         startActivityButtonLogin.setOnClickListener { moveNext(LoginActivity::class.java) }
+        startActivityButtonSignUp.setOnClickListener { moveNext(SignUpActivity::class.java) }
     }
 }
